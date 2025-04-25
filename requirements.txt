@@ -1,0 +1,234 @@
+# =========================
+# 基础工具与环境管理
+# =========================
+pip==23.3                     # 包管理工具，安装依赖
+setuptools==68.0.0            # 安装工具，包管理
+wheel==0.41.2                 # 打包工具，生成whl包
+platformdirs==3.0.0           # 平台目录管理，缓存与配置
+
+# =========================
+# Python 标准库扩展与类型支持
+# =========================
+dataclasses==0.6              # Python 3.6 dataclass 支持，结构化数据
+typing_extensions==4.7.1      # 类型扩展，兼容新特性
+typing-inspect==0.9.0         # 类型检查，类型提示
+annotated-types==0.6.0        # 类型注解扩展，提升类型安全性
+mypy-extensions==1.0.0        # mypy 类型扩展，类型检查
+
+# =========================
+# 日志与调试
+# =========================
+loguru==0.7.2                 # 日志库，项目日志输出
+coloredlogs==15.0.1           # 彩色日志输出，提升日志可读性
+humanfriendly==10.0           # 友好的人类可读格式，日志与输出美化
+debugpy==1.6.6                # Python 远程调试，支持VSCode等IDE调试
+stack-data==0.6.2             # 堆栈数据分析，调试工具
+asttokens==2.2.1              # 代码分析工具，调试和代码高亮
+executing==1.2.0              # 代码执行分析，调试工具
+pure-eval==0.2.2              # 表达式求值，调试工具
+
+# =========================
+# 异步与并发
+# =========================
+aiofiles==23.2.1              # 异步文件操作，用于高效读取/写入本地知识库文件
+aiohttp==3.8.6                # 异步 HTTP 客户端/服务端，支持异步网络请求（如API调用）
+aiosignal==1.3.1              # 异步信号处理，配合aiohttp等异步库使用
+anyio==3.7.0                  # 异步 IO 支持，底层异步框架兼容
+async-timeout==4.0.3          # 异步超时控制，防止异步任务阻塞
+nest-asyncio==1.5.4           # 嵌套异步支持，Jupyter异步兼容
+uvloop==0.19.0                # 高性能事件循环，提升异步性能
+sniffio==1.3.0                # 异步库检测，anyio依赖
+threadpoolctl==3.1.0          # 线程池控制，scikit-learn依赖
+
+# =========================
+# 网络请求与API
+# =========================
+requests==2.31.0              # HTTP 请求，常规API调用
+httpx==0.25.1                 # HTTP 客户端，异步API请求
+httpcore==1.0.2               # HTTP 核心库，httpx依赖
+h11==0.14.0                   # HTTP/1.1 协议实现，FastAPI/Starlette依赖
+httptools==0.6.1              # HTTP 工具，uvicorn依赖
+urllib3==2.0.7                # HTTP 库，requests依赖
+idna==3.4                     # 国际化域名支持，网络请求兼容性
+charset-normalizer==3.3.2     # 字符编码检测，提升文本处理兼容性
+chardet==5.2.0                # 字符编码检测，自动识别文件编码
+certifi==2023.7.22            # 证书支持，保证HTTPS安全通信
+
+# =========================
+# Web 框架与服务
+# =========================
+#fastapi==0.85.1               # Web 框架 FastAPI，提供API服务
+fastapi>=0.100.0              # Web 框架 FastAPI，提供API服务
+pydantic==2.11.3              # 数据验证，API请求参数校验
+starlette==0.20.4             # ASGI 框架，FastAPI底层
+uvicorn==0.24.0.post1         # ASGI 服务器，FastAPI部署
+tornado==6.3.3                # Web 框架，Jupyter依赖
+
+# =========================
+# 命令行与交互
+# =========================
+click==8.1.7                  # 命令行工具，构建CLI应用
+prompt-toolkit==3.0.38        # 命令行交互工具，增强CLI体验
+backcall==0.2.0               # 命令行回调支持，Jupyter/IPython 相关
+
+# =========================
+# Jupyter 相关
+# =========================
+ipykernel==6.23.1             # Jupyter 内核，支持notebook运行
+ipython==8.10.0               # 交互式 Python，命令行和notebook开发
+jupyter_client==8.6.0         # Jupyter 客户端，notebook通信
+jupyter_core==5.3.0           # Jupyter 核心，notebook支持
+traitlets==5.9.0              # 配置系统，Jupyter依赖
+matplotlib-inline==0.1.3      # Jupyter 内联绘图，notebook可视化
+comm==0.1.3                   # Jupyter 通信支持，内核与前端通信
+pexpect==4.8.0                # 进程控制，自动化测试
+ptyprocess==0.7.0             # 伪终端支持，pexpect依赖
+pickleshare==0.7.5            # 变量持久化，IPython依赖
+entrypoints==0.4              # 插件入口点，扩展机制
+
+# =========================
+# 数据处理与科学计算
+# =========================
+numpy==1.26.2                 # 科学计算，数据分析与处理
+pandas==2.1.3                 # 数据分析，表格数据处理
+scipy==1.11.2                 # 科学计算，数据分析
+numexpr==2.8.7                # 数值表达式计算，加速大数据处理
+joblib==1.3.2                 # 并行计算，加速数据处理
+psutil==5.9.4                 # 系统与进程监控，资源管理
+monotonic==1.6                # 单调时钟，时间测量
+
+# =========================
+# 机器学习与NLP
+# =========================
+scikit-learn==1.2.2           # 机器学习，文本向量化等
+nltk==3.8.1                   # 自然语言处理，文本分析
+jieba==0.42.1                 # 中文分词，文本预处理
+tokenizers==0.14.1            # 分词器，文本向量化
+rouge-chinese==1.0.3          # 中文 ROUGE 评测，文本摘要评估
+
+# =========================
+# 向量数据库与检索
+# =========================
+chromadb==0.3.29              # 向量数据库 Chroma，存储和检索知识库向量
+hnswlib==0.7.0                # 高效向量检索库，知识库相似度检索
+
+# =========================
+# LangChain 及相关生态
+# =========================
+langchain==0.1.13            # LangChain 框架，核心大模型链路
+langsmith==0.1.17             # LangChain 相关工具，调试与监控
+langchain-community==0.0.31   # LangChain 社区扩展，增强大模型链路能力
+
+# =========================
+# 大模型与AI相关
+# =========================
+openai==0.27.6                # OpenAI API，调用GPT等大模型
+zhipuai==1.0.7                # 智谱 AI SDK，调用智谱大模型
+huggingface-hub==0.30.2       # HuggingFace Hub 支持，模型下载与管理
+ruff==0.11.6                  # 代码风格检查，代码质量保证
+tomlkit==0.12.0               # TOML 配置文件解析，配置文件管理
+onnxruntime==1.16.2           # ONNX 推理，模型部署
+
+# =========================
+# Gradio 及可视化
+# =========================
+gradio==3.34.0                # Web 可视化界面 Gradio，搭建交互式前端
+gradio_client==0.5.1          # Gradio 客户端，远程调用Gradio服务
+altair==5.1.2                 # 可视化库，用于数据可视化展示
+matplotlib==3.8.1             # 绘图库，数据可视化
+contourpy==1.2.0              # 轮廓绘制，matplotlib依赖
+cycler==0.12.1                # matplotlib 配置循环器，图形属性循环
+kiwisolver==1.4.5             # 数学表达式求解，matplotlib依赖
+fonttools==4.44.0             # 字体处理，matplotlib依赖
+Pillow==10.1.0                # 图像处理，图片展示与处理
+Markdown==3.4.3               # Markdown 解析，知识库文档处理
+markdown-it-py==2.2.0         # Markdown 解析，文本格式化
+mdit-py-plugins==0.3.3        # Markdown-it 插件，增强Markdown解析
+mdurl==0.1.2                  # Markdown URL 解析，链接处理
+Pygments==2.14.0              # 代码高亮，Gradio等界面美化
+tabulate==0.9.0               # 表格输出，数据展示
+tqdm==4.66.1                  # 进度条，任务进度展示
+
+# =========================
+# 数据库与存储
+# =========================
+duckdb==0.9.1                 # 嵌入式分析型数据库，数据分析与处理
+clickhouse-connect==0.6.20    # ClickHouse 数据库连接，支持大数据分析
+SQLAlchemy==2.0.23            # ORM 框架，数据库操作
+filelock==3.13.1              # 文件锁，防止并发读写冲突
+lz4==4.3.2                    # LZ4 压缩，数据压缩加速
+zstandard==0.22.0             # Zstandard 压缩，数据压缩
+zipp==3.11.0                  # zip 文件支持，importlib依赖
+fsspec==2023.10.0             # 文件系统抽象，支持多种存储后端
+
+# =========================
+# 文件与格式处理
+# =========================
+filetype==1.2.0               # 文件类型检测，自动识别上传文件类型
+python-magic==0.4.27          # 文件类型识别，自动识别上传文件
+PyMuPDF==1.23.6               # PDF 处理，知识库文档解析
+PyMuPDFb==1.23.6              # PDF 处理（兼容包），文档解析
+unstructured==0.9.0           # 非结构化数据处理，文档解析
+PyYAML==6.0.1                 # YAML 解析，配置文件支持
+orjson==3.9.14                # 高性能 JSON，提升序列化速度
+dataclasses-json==0.5.14      # dataclass 与 JSON 转换，便于数据序列化
+marshmallow==3.20.1           # 数据序列化/反序列化，API数据处理
+
+# =========================
+# 安全与认证
+# =========================
+PyJWT==2.8.0                  # JWT 认证，API安全
+
+# =========================
+# 其他常用工具
+# =========================
+decorator==5.1.1              # 装饰器工具，简化函数装饰
+six==1.16.0                   # Python2/3 兼容，依赖库
+overrides==7.4.0              # 方法重载，类型安全
+packaging==23.2               # 包管理工具，依赖解析
+sympy==1.12                   # 符号计算，数学表达式处理
+mpmath==1.3.0                 # 数学库，符号计算
+toolz==0.12.0                 # 函数式工具，数据处理
+watchfiles==0.21.0            # 文件监控，自动重载
+wcwidth==0.2.5                # 字符宽度计算，终端输出对齐
+uc-micro-py==1.0.2            # Unicode 支持，文本处理
+multidict==6.0.4              # 多值字典，aiohttp依赖
+frozenlist==1.4.0             # 不可变列表，aiohttp依赖
+greenlet==3.0.1               # 协程支持，异步任务调度
+backoff==2.2.1                # 重试机制支持，API调用失败时自动重试
+tenacity==8.2.3               # 重试机制，API健壮性
+exceptiongroup==1.0.4         # 异常分组，兼容异步异常处理
+semantic-version==2.10.0      # 语义化版本，依赖管理
+posthog==3.0.2                # 数据分析工具，用户行为分析
+pulsar-client==3.3.0          # Pulsar 消息队列客户端，流式数据处理
+pydub==0.25.1                 # 音频处理，语音数据处理
+python-dateutil==2.8.2        # 日期处理，时间数据解析
+pytz==2023.3.post1            # 时区处理，时间数据标准化
+tzdata==2023.3                # 时区数据，时间处理
+regex==2023.5.5               # 正则表达式，文本处理
+linkify-it-py==2.0.2          # 链接识别，文本处理
+lxml==4.9.3                   # XML/HTML 解析，网页内容抽取
+importlib-metadata==6.0.0     # 导入元数据，包管理兼容
+importlib-resources==6.1.1    # 导入资源，数据文件管理
+referencing==0.30.2           # JSON Schema 引用，jsonschema依赖
+jsonschema==4.19.2            # JSON Schema 校验，API参数校验
+jsonschema-specifications==2023.7.1 # JSON Schema 规范，jsonschema依赖
+python-dotenv==1.0.0          # .env 环境变量加载，配置管理
+matplotlib-inline==0.1.3      # Jupyter 内联绘图，notebook可视化
+
+# =========================
+# WebSocket/实时通信
+# =========================
+websocket-client==1.5.2       # WebSocket 客户端，实时通信
+websockets==11.0.3            # WebSocket 支持，异步通信
+yarl==1.9.2                   # URL 处理，aiohttp依赖
+rpds-py==0.12.0               # Rust Python 数据结构，性能优化
+
+# =========================
+# 其他
+# =========================
+MarkupSafe==2.1.3             # 安全字符串，模板渲染安全
+parso==0.8.3                  # Python 解析器，jedi依赖
+mdit-py-plugins==0.3.3        # Markdown-it 插件，增强Markdown解析
+mdurl==0.1.2                  # Markdown URL 解析，链接处理
+flatbuffers==23.5.26          # 扁平缓冲区序列化，提升数据传输效率

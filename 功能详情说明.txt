@@ -1,0 +1,52 @@
+本项目是一个基于 Langchain 构建的个人知识库助手，专注于整合和查询 Datawhale 开源社区的相关项目信息。其核心功能围绕知识库的构建、索引、查询和交互展开。
+
+## 1. 知识库构建与管理
+*   **Datawhale 项目信息获取**:
+    *   通过 `database/test_get_all_repo.py` 脚本，自动从 GitHub API 获取 `datawhalechina` 组织下的所有公开仓库的元数据。
+    *   下载每个仓库的 `README.md` 文件，存储在 `database/readme_db/` 目录下。
+*   **README 内容摘要**:
+    *   使用 `database/text_summary_readme.py` 脚本，调用大语言模型（如 GPT-3.5, DeepSeek, Moonshot）对获取到的 `README.md` 文件进行内容摘要。
+    *   脚本包含文本预处理步骤，如去除 URL、过滤特定词汇，以提高摘要质量和规避风险。
+    *   生成的摘要文件（Markdown 格式）保存在 `knowledge_db/readme_summary/` 目录下。
+*   **多格式文档加载**:
+    *   `database/create_db.py` 脚本负责加载和处理多种格式的知识库文档，包括：
+        *   Markdown 文件 (`.md`)：使用 `UnstructuredMarkdownLoader`。
+        *   PDF 文件 (`.pdf`)：使用 `PyMuPDFLoader`（例如 `knowledge_db/pumkin_book/` 下的《机器学习公式详解》）。
+        *   视频字幕/文本 (`.mp4` 对应的 `.txt`, `.srt` 等)：虽然直接加载 MP4 不常见，但项目包含了处理视频内容的示例（如 `knowledge_db/easy_rl/` 下的强化学习指南），暗示可能处理其文本内容。
+    *   加载后的文档会进行切分（Splitting），为后续的向量化做准备。
+*   **知识库存储**:
+    *   原始和处理后的知识库文件集中存储在 `knowledge_db/` 目录下，按项目或主题分类。
+
+## 2. 知识库索引
+*   **文本向量化 (Embedding)**:
+    *   使用 `embedding/call_embedding.py` 模块，支持多种 Embedding 模型（如 M3E, ZhipuAI 等）将处理后的文档块转换为向量表示。
+    *   具体的模型实现位于 `embedding/` 目录下（例如 `zhipuai_embedding.py`）。
+*   **向量数据库存储**:
+    *   `database/create_db.py` 脚本将生成的文本向量存储到向量数据库中。
+    *   本项目默认使用 ChromaDB，并将数据库文件存储在 `vector_db/chroma/` 目录下。
+    *   向量数据库使得基于语义相似度的快速文档检索成为可能。
+
+## 3. 问答 (QA) 与检索
+*   **检索增强生成 (RAG)**:
+    *   核心 QA 逻辑位于 `qa_chain/` 目录下。
+    *   `get_vectordb.py` 负责从向量数据库中检索与用户提问最相关的文档片段。
+    *   `model_to_llm.py` 负责根据配置初始化选定的大语言模型（LLM）。
+    *   `QA_chain_self.py`（可能还有 `Chat_QA_chain_self.py` 用于对话模式）整合了检索到的上下文信息和用户问题，提交给 LLM 生成回答。
+*   **多 LLM 支持**:
+    *   项目通过 `llm/` 目录下的脚本支持多种 LLM API，包括：
+        *   OpenAI (GPT 系列)
+        *   文心一言 (ERNIE Bot 系列)
+        *   讯飞星火 (Spark 系列)
+        *   智谱 AI (ChatGLM 系列)
+    *   `call_llm.py` 提供了统一的调用接口。
+
+## 4. 用户交互界面
+*   **Web 服务**:
+    *   `serve/` 目录包含启动用户界面的代码。
+    *   `run_gradio.py` 使用 Gradio 库创建一个交互式的 Web UI，用户可以通过该界面输入问题并获取基于知识库的回答。
+    *   `api.py`（配合 `run_api.sh`）可能提供了一个 FastAPI 等框架构建的 API 服务，允许其他程序调用知识库问答功能。
+*   **配置管理**:
+    *   `.env` 文件用于存储敏感信息和配置，如 API 密钥、模型名称等。
+
+## 总结
+该项目实现了一个完整的 RAG 流程，能够自动构建关于 Datawhale 项目的知识库，利用向量数据库进行高效检索，并结合多种大语言模型提供智能问答服务，最终通过 Web 界面或 API 对外提供功能。
